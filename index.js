@@ -26,7 +26,7 @@ async function jalankan(page, link)
         var wkt = await new Date();
 
         const date = await new Date();
-        const asd = await new Date("December 11, 2020 21:28:00:000"); // Ingat ini
+        const asd = await new Date("December 11, 2020 22:18:59:000"); // Ingat ini
         console.log("Waiting for the time...");
         console.log("The time is " + (((asd-date)/1000)/60)/60);
         await page.waitForTimeout(asd-date);
@@ -80,7 +80,7 @@ async function jalankan(page, link)
             await page
                 .waitForSelector(`div.cart-page-footer__checkout > button`)
                 .then(() => page.click(`div.cart-page-footer__checkout > button`));
-            console.log("Successfully checked out...");
+            console.log("checked out...");
 
             wkt1 = new Date();
             console.log((wkt1-wkt)/1000)
@@ -93,15 +93,26 @@ async function jalankan(page, link)
             // Select Shopeepay
             await page
                 .waitForSelector('#main > div > div._1Bj1VS > div.page-checkout.container > div.page-checkout__payment-order-wrapper > div.checkout-payment-method-view > div > div.checkout-payment-method-view__current.checkout-payment-setting > div.checkout-payment-setting__payment-methods-tab > span:nth-child(1) > button')
-                .then(() => page.click('#main > div > div._1Bj1VS > div.page-checkout.container > div.page-checkout__payment-order-wrapper > div.checkout-payment-method-view > div > div.checkout-payment-method-view__current.checkout-payment-setting > div.checkout-payment-setting__payment-methods-tab > span:nth-child(1) > button'));
-            console.log("Select Shopeepay");
-
-            //#main > div > div._1Bj1VS > div.page-checkout.container > div.page-checkout__payment-order-wrapper > div.OR36Xx > div._3S63c5._1WpGLP > button
-            await page
-                .waitForSelector('#main > div > div._1Bj1VS > div.page-checkout.container > div.page-checkout__payment-order-wrapper > div.OR36Xx > div._3S63c5._1WpGLP > button')
-                .then(() => page.click('#main > div > div._1Bj1VS > div.page-checkout.container > div.page-checkout__payment-order-wrapper > div.OR36Xx > div._3S63c5._1WpGLP > button'));
-            console.log("Cekout");
+                .then(() => page.click('#main > div > div._1Bj1VS > div.page-checkout.container > div.page-checkout__payment-order-wrapper > div.checkout-payment-method-view > div > div.checkout-payment-method-view__current.checkout-payment-setting > div.checkout-payment-setting__payment-methods-tab > span:nth-child(1) > button'));    
+                console.log("Select Shopeepay");
+            await page.waitForTimeout(300);
             
+
+                ////*[@id="main"]/div/div[2]/div[3]/div[4]/div[2]/div[10]/button
+            await page
+               .waitForSelector(`#main > div > div._1Bj1VS > div.page-checkout.container > div.checkout-product-ordered-list > div.checkout-product-ordered-list__content > div > div.Bghhyr > div._3-_Zjn.pC1-UH > div._3f0IkJ`)
+               .then(() => page.click(`#main > div > div._1Bj1VS > div.page-checkout.container > div.checkout-product-ordered-list > div.checkout-product-ordered-list__content > div > div.Bghhyr > div._3-_Zjn.pC1-UH > div._3f0IkJ`));
+              //#modal > div.shopee-modal__container > div.shopee-modal__content > div.logistics-selection-modal > div.logistics-selection-modal__selection-container > div > div > div.stardust-dropdown__item-body.stardust-dropdown__item-body--open > div > div > div > div > div.stardust-radio.stardust-radio--checked > div.stardust-radio__content > div > div.stardust-dropdown.stardust-dropdown--open > div.stardust-dropdown__item-body.stardust-dropdown__item-body--open > div.stardust-radio._137jG8.stardust-radio--checked
+            await page
+              .waitForSelector(`#modal > div.shopee-modal__container > div.shopee-modal__content > div.logistics-selection-modal__footer > div > button.stardust-button.stardust-button--primary.logistics-selection-modal__submit-btn`)
+              .then(() => page.click(`#modal > div.shopee-modal__container > div.shopee-modal__content > div.logistics-selection-modal__footer > div > button.stardust-button.stardust-button--primary.logistics-selection-modal__submit-btn`));
+            console.log("pilih pengiriman");
+            //await page  page.click(`#modal > div.shopee-modal__container > div.shopee-modal__content > div.logistics-selection-modal > div.logistics-selection-modal__selection-container > div > div > div.stardust-dropdown__item-body.stardust-dropdown__item-body--open > div > div > div > div > div.stardust-radio.stardust-radio--checked > div.stardust-radio__content > div > div.stardust-dropdown.stardust-dropdown--open > div.stardust-dropdown__item-body.stardust-dropdown__item-body--open > div:nth-child(1) > div.stardust-radio-button > div`);
+            
+            await page 
+                .waitForSelector(`#main > div > div._1Bj1VS > div.page-checkout.container > div.page-checkout__payment-order-wrapper > div.OR36Xx > div._3S63c5._1WpGLP > button`)
+                .then(() => page.click(`#main > div > div._1Bj1VS > div.page-checkout.container > div.page-checkout__payment-order-wrapper > div.OR36Xx > div._3S63c5._1WpGLP > button`));
+             console.log("Chekouttt gannnnn");
 
             wkt1 = new Date();
             console.log((wkt1-wkt)/1000);
@@ -151,7 +162,6 @@ async function otp(page)
                 console.log(`Successfully clicked the Verifikasi button`);
             } else {
                 await page.click('#main > div > div._3evFhm > div > div > form > div > div._1B7mke._1W4V3v > div.oB34z1 > div:nth-child(2) > span:nth-child(3)');
-                await page.waitForTimeout(300);
                 await page
                     .waitForSelector('#main > div > div._3evFhm > div > div > div > div._1B7mke._1W4V3v > div > button:nth-child(3)')
                     .then(() => page.click('#main > div > div._3evFhm > div > div > div > div._1B7mke._1W4V3v > div > button:nth-child(3)'));
